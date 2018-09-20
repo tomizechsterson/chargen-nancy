@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using chargen_nancy.Datastore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Nancy.Owin;
@@ -22,6 +23,8 @@ namespace chargen_nancy
             }
 
             app.UseOwin(x => x.UseNancy());
+            
+            new DBSetup("characters").Setup();
         }
     }
 }
