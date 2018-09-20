@@ -4,7 +4,7 @@ using Microsoft.Data.Sqlite;
 
 namespace chargen_nancy.Datastore
 {
-    public class ADD2SqliteCharacters
+    public class ADD2SqliteCharacters : ADD2Characters
     {
         private readonly string _connectionString;
         private readonly SqliteConnection _testConnection;
