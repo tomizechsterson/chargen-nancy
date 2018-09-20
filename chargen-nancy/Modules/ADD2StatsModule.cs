@@ -5,7 +5,7 @@ using Nancy;
 
 namespace chargen_nancy.Modules
 {
-    public class ADD2StatsModule : NancyModule
+    public sealed class ADD2StatsModule : NancyModule
     {
         public ADD2StatsModule()
         {

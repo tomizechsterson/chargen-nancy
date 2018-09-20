@@ -5,7 +5,7 @@ using Nancy.ModelBinding;
 
 namespace chargen_nancy.Modules
 {
-    public class ADD2DatastoreModule : NancyModule
+    public sealed class ADD2DatastoreModule : NancyModule
     {
         public ADD2DatastoreModule()
         {

@@ -4,7 +4,7 @@ using Nancy;
 
 namespace chargen_nancy.Modules
 {
-    public class ADD2RaceModule :  NancyModule
+    public sealed class ADD2RaceModule :  NancyModule
     {
         public ADD2RaceModule()
         {
