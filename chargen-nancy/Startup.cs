@@ -12,6 +12,17 @@ namespace chargen_nancy
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(o =>
+            {
+                o.AddPolicy("SpecificOrigin", builder =>
+                {
+                    builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+                });
+                o.AddPolicy("AnyOrigin", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -21,6 +32,8 @@ namespace chargen_nancy
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("AnyOrigin");
 
             app.UseOwin(x => x.UseNancy());
             
