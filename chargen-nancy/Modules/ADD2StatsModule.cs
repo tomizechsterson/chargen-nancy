@@ -7,13 +7,11 @@ namespace chargen_nancy.Modules
 {
     public class ADD2StatsModule : NancyModule
     {
-        private readonly Random _random;
-
         public ADD2StatsModule()
         {
-            _random = new Random(Environment.TickCount);
+            var random = new Random(Environment.TickCount);
 
-            Get("/rollstats/{rollRule}", args => new StatRoll(args.rollRule, _random).RollStats());
+            Get("/rollstats/{rollRule}", args => new StatRoll(args.rollRule, random).RollStats());
             Get("/final/{race}/{className}", args =>
             {
                 var result = new List<int> {new MovementRate(args.race).Get()};
