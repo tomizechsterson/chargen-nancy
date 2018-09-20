@@ -134,9 +134,10 @@ UpgradeLog*.htm
 # JetBrains Rider
 .idea/
 *.sln.iml
+contentModel.xml
 
 stresults.*
 # Definitely don't need to commit the database that the actual service creates
-ADD2CharacterService/characters
-DD35CharacterService/characters
+#ADD2CharacterService/characters
+#DD35CharacterService/characters
 .gitconfig
