@@ -1,6 +1,6 @@
 namespace chargen_nancy.App.RaceStuff
 {
-    public class AvailableRace
+    internal struct AvailableRace
     {
         private readonly string _name;
         private readonly int _minStr;
