@@ -14,3 +14,6 @@ build:
   parallel: true
   project: chargen-nancy.sln
   verbosity: minimal
+  
+test: off
+deploy: off
