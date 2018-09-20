@@ -6,15 +6,5 @@
       "applicationUrl": "http://localhost:37040",
       "sslPort": 44355
     }
-  },
-  "profiles": {
-    "chargen_nancy": {
-      "commandName": "Project",
-      "launchBrowser": false,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    }
   }
 }
