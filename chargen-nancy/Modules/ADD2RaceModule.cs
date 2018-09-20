@@ -11,8 +11,8 @@ namespace chargen_nancy.Modules
             var random = new Random(Environment.TickCount);
             
             Get("/races/{str:int}/{dex:int}/{con:int}/{int:int}/{wis:int}/{chr:int}", args => new AvailableRaces(args.str, args.dex, args.con, args.@int, args.wis, args.chr).Select());
-            Get("statadjust/{race:alpha}", args => new RacialStatAdjust(args.race).Adjustments());
-            Get("hwa/{race:alpha}/{gender:alpha}", args =>
+            Get("statadjust/{race}", args => new RacialStatAdjust(args.race).Adjustments());
+            Get("hwa/{race}/{gender:alpha}", args =>
             {
                 var hwa = new HeightWeightAge(args.race, args.gender, random);
                 return new[]
