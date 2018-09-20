@@ -5,9 +5,9 @@ using Nancy;
 
 namespace chargen_nancy.Modules
 {
-    public sealed class ClassModule : NancyModule
+    public sealed class ADD2ClassModule : NancyModule
     {
-        public ClassModule()
+        public ADD2ClassModule()
         {
             var random = new Random(Environment.TickCount);
 
