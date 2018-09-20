@@ -18,8 +18,8 @@ Be sure to have the latest versions of these installed:
   
 ### Installing
 
-- Make a folder for the code and run `git clone https://github.com/tomizechsterson/CharGen`
-  - This will pull down the latest version of the code and copy it into the `CharGen` folder
+- Make a folder for the code and run `git clone https://github.com/tomizechsterson/chargen-nancy`
+  - This will pull down the latest version of the code and copy it into the `chargen-nancy` folder
 - Navigate into this folder with your terminal of choice
 - Run `dotnet restore` at the root of the project
 
