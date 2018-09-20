@@ -10,10 +10,10 @@ namespace chargen_nancy.App
         private readonly Random _random;
         private readonly Dictionary<string, DieRoll> _initialFundRolls;
 
-        public Funds(string className, Random random)
+        public Funds(Random random, params string[] className)
         {
-            _className = className.Replace("%2F", "/").ToLower();
             _random = random;
+            _className = string.Join('/', className).TrimEnd('/').ToLower();
             _initialFundRolls = InitializeFundRolls();
         }
 

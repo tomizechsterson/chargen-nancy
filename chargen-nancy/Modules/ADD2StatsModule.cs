@@ -12,10 +12,10 @@ namespace chargen_nancy.Modules
             var random = new Random(Environment.TickCount);
 
             Get("/rollstats/{rollRule}", args => new StatRoll(args.rollRule, random).RollStats());
-            Get("/final/{race}/{className}", args =>
+            Get("/final/{race}/{className}/{classTwo?}/{classThree?}", args =>
             {
                 var result = new List<int> {new MovementRate(args.race).Get()};
-                result.AddRange(new SavingThrows(args.className).Get());
+                result.AddRange(new SavingThrows(args.className, args.classTwo, args.classThree).Get());
                 return result.ToArray();
             });
         }

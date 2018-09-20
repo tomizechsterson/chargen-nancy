@@ -7,9 +7,9 @@ namespace chargen_nancy.App.ClassStuff
         private readonly string _className;
         private readonly Dictionary<string, string[]> _allowedAlignments;
 
-        public AllowedAlignments(string className)
+        public AllowedAlignments(params string[] className)
         {
-            _className = className.Replace("%2F", "/").ToLower();
+            _className = string.Join('/', className).TrimEnd('/').ToLower();
             _allowedAlignments = InitializeAlignments();
         }
 

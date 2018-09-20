@@ -10,10 +10,10 @@ namespace chargen_nancy.App
         private readonly Random _random;
         private readonly Dictionary<string, DieRoll> _initialHpRolls;
         
-        public HP(string className, Random random)
+        public HP(Random random, params string[] className)
         {
-            _className = className.Replace("%2F", "/");
             _random = random;
+            _className = string.Join('/', className).TrimEnd('/').ToLower();
             _initialHpRolls = InitializeStartingHPRolls();
         }
 

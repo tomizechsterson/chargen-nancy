@@ -8,9 +8,9 @@ namespace chargen_nancy.App
         private readonly string _className;
         private readonly Dictionary<string, int[]> _savingThrows;
 
-        public SavingThrows(string className)
+        public SavingThrows(params string[] className)
         {
-            _className = className.Replace("%2F", "/");
+            _className = string.Join('/', className).TrimEnd('/').ToLower();
             _savingThrows = InitializeSavingThrows();
         }
 

@@ -11,12 +11,17 @@ namespace chargen_nancy.Modules
         {
             var random = new Random(Environment.TickCount);
 
-            Get("/classes/{race}/{str}/{dex}/{con}/{int}/{wis}/{chr}",
+            Get("/classes/{race}/{str:int}/{dex:int}/{con:int}/{int:int}/{wis:int}/{chr:int}",
                 args => new AvailableClasses(args.race, args.str, args.dex, args.con, args.@int, args.wis, args.chr)
                     .Select());
-            Get("/hpgp/{className}",
-                args => new[] {new HP(args.className, random).Get(), new Funds(args.className, random).Get()});
-            Get("/alignment/{className}", args => new AllowedAlignments(args.className).Get());
+            Get("/hpgp/{className}/{classTwo?}/{classThree?}",
+                args => new[]
+                {
+                    new HP(random, args.className, args.classTwo, args.classThree).Get(),
+                    new Funds(random, args.className, args.classTwo, args.classThree).Get()
+                });
+            Get("/alignment/{className}/{classTwo?}/{classThree?}",
+                args => new AllowedAlignments(args.className, args.classTwo, args.classThree).Get());
         }
     }
 }
