@@ -21,7 +21,7 @@ namespace chargen_nancy.Modules
                 return models;
             });
 
-            Get("/{id}", async args => await db.Get(args.id).ToModel());
+            Get("/{id:int}", async args => await db.Get(args.id).ToModel());
 
             Post("/", async args =>
             {
@@ -29,13 +29,13 @@ namespace chargen_nancy.Modules
                 await db.Add(model);
             });
 
-            Put("/{id}", async args =>
+            Put("/{id:int}", async args =>
             {
                 var model = this.Bind<HttpCharacterModel>();
                 await db.Update(args.id, model);
             });
 
-            Delete("/{id}", async args => { await db.Delete(args.id); });
+            Delete("/{id:int}", async args => { await db.Delete(args.id); });
         }
     }
 }
