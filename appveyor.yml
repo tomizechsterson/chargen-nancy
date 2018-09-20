@@ -1,0 +1,16 @@
+version: 0.1.{build}
+
+image: Visual Studio 2017
+
+matrix:
+  fast_finish: true
+
+install:
+  - cmd: dotnet restore
+    
+configuration: Release
+
+build:
+  parallel: true
+  project: chargen-nancy.sln
+  verbosity: minimal
