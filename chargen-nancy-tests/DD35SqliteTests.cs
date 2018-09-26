@@ -28,7 +28,7 @@ namespace chargen_nancy_tests
         }
 
         [Fact]
-        public async Task Get()
+        public async Task InsertGet()
         {
             await _db.Add(new CharacterModel {Name = "test"});
 
@@ -36,6 +36,28 @@ namespace chargen_nancy_tests
 
             Assert.Equal(1, result.Id);
             Assert.Equal("test", result.Name);
+        }
+
+        [Fact]
+        public async Task Update()
+        {
+            await _db.Add(new CharacterModel {Name = "initial"});
+            await _db.Update(1, new CharacterModel {Name = "updated"});
+
+            var result = await _db.Get(1);
+
+            Assert.Equal("updated", result.Name);
+        }
+
+        [Fact]
+        public async Task Delete()
+        {
+            await _db.Add(new CharacterModel {Name = "delete"});
+
+            await _db.Delete(1);
+            var result = await _db.Get(1);
+
+            Assert.Equal("none", result.Name);
         }
     }
 }
