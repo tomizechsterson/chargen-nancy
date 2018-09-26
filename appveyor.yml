@@ -15,5 +15,8 @@ build:
   project: chargen-nancy.sln
   verbosity: minimal
   
-test: off
+test_script:
+  - cmd: dotnet test chargen-nancy-tests -c Release -v q --no-build
+  - cmd: dotnet run -p chargen-nancy-storyteller -- run --tracing appveyor
+
 deploy: off
