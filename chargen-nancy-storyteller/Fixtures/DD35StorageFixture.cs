@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using chargen_nancy.Modules.DD35;
 using chargen_nancy_dd35.Datastore;
 using Microsoft.Data.Sqlite;
-using Nancy;
 using Nancy.Testing;
 using StoryTeller;
 
@@ -14,23 +17,47 @@ namespace chargen_nancy_storyteller.Fixtures
 
         public override void SetUp()
         {
-            
+            new SqliteDbSetup(_testConnection).CreateTables();
+            _browser = new Browser(with =>
+            {
+                with.Module<DD35DatastoreModule>();
+                with.Dependency(new DD35SqliteCharacters(_testConnection));
+            });
         }
 
-        public void GetById(int id)
+        public async Task<int> GetAllAsync()
         {
+            var response = await _browser.Get("/", with =>
+            {
+                with.HttpsRequest();
+                with.Header("Accept", "application/json");
+            });
             
+            return response.Body.DeserializeJson<IEnumerable<CharacterModel>>().Count();
         }
 
-        public void InsertNew(string name)
+        public async Task GetByIdAsync(int id)
         {
-            var browser = new Browser(new DefaultNancyBootstrapper());
+            var response = await _browser.Get($"/{id.ToString()}", with =>
+            {
+                with.HttpsRequest();
+                with.Header("Accept", "application/json");
+            });
+            _character = response.Body.DeserializeJson<CharacterModel>();
+        }
 
-            browser.Post("/", with =>
+        public async Task InsertNewAsync(string name)
+        {
+            await _browser.Post("/", with =>
             {
                 with.HttpsRequest();
                 with.Body($"name: {name}", "application/json");
             });
+        }
+
+        public string CheckName()
+        {
+            return _character.Name;
         }
     }
 }
