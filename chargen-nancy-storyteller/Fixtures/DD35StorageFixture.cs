@@ -58,6 +58,7 @@ namespace chargen_nancy_storyteller.Fixtures
 
         public async Task UpdateAsync(int id, string name)
         {
+            throw new StorytellerAssertionException("Test breaking storyteller test");
             await _browser.Put($"/{id.ToString()}", with =>
             {
                 with.HttpsRequest();
