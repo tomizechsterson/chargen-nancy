@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using chargen_nancy_dd35.Datastore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Nancy.Owin;
@@ -22,6 +23,7 @@ namespace chargen_nancy_dd35
             }
 
             app.UseOwin(x => x.UseNancy());
+            new SqliteDbSetup("characters").CreateTables();
         }
     }
 }
