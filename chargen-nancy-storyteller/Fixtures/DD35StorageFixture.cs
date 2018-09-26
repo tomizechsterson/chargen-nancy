@@ -51,22 +51,28 @@ namespace chargen_nancy_storyteller.Fixtures
             await _browser.Post("/", with =>
             {
                 with.HttpsRequest();
-                with.Body($"name: {name}", "application/json");
+                with.Header("Accept", "application/json");
+                with.JsonBody(new CharacterModel {Name = name});
             });
         }
 
         public async Task UpdateAsync(int id, string name)
         {
-            await _browser.Put("/", with =>
+            await _browser.Put($"/{id.ToString()}", with =>
             {
                 with.HttpsRequest();
-                with.Body($"name: {name}", "applicaiton/json");
+                with.Header("Accept", "application/json");
+                with.JsonBody(new CharacterModel {Name = name});
             });
         }
 
         public async Task DeleteAsync(int id)
         {
-            await _browser.Delete($"/{id.ToString()}", with => { with.HttpsRequest(); });
+            await _browser.Delete($"/{id.ToString()}", with =>
+            {
+                with.HttpsRequest();
+                with.Header("Accept", "application/json");
+            });
         }
 
         public string CheckName()

@@ -57,10 +57,68 @@ namespace chargen_nancy_tests
                 with.Header("Accept", "application/json");
             });
 
-            var model = response.Body.DeserializeJson<IEnumerable<CharacterModel>>();
+            var model = response.Body.DeserializeJson<IEnumerable<CharacterModel>>().ToArray();
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
             Assert.Single(model);
+            Assert.Equal("test", model[0].Name);
+        }
+
+        [Fact]
+        public async Task UpdateAsync()
+        {
+            await _browser.Post("/", with =>
+            {
+                with.HttpsRequest();
+                with.Header("Accept", "application/json");
+                with.JsonBody(new CharacterModel {Name = "test"});
+            });
+
+            await _browser.Put("/1", with =>
+            {
+                with.HttpsRequest();
+                with.Header("Accept", "application/json");
+                with.JsonBody(new CharacterModel {Name = "updated"});
+            });
+
+            var response = await _browser.Get("/1", with =>
+            {
+                with.HttpsRequest();
+                with.Header("Accept", "application/json");
+            });
+            
+            var model = response.Body.DeserializeJson<CharacterModel>();
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Equal(1, model.Id);
+            Assert.Equal("updated", model.Name);
+        }
+
+        [Fact]
+        public async Task DeleteAsync()
+        {
+            await _browser.Post("/", with =>
+            {
+                with.HttpsRequest();
+                with.Header("Accept", "application/json");
+                with.JsonBody(new CharacterModel {Name = "delete"});
+            });
+
+            await _browser.Delete("/1", with =>
+            {
+                with.HttpsRequest();
+                with.Header("Accept", "application/json");
+            });
+
+            var response = await _browser.Get("/", with =>
+            {
+                with.HttpsRequest();
+                with.Header("Accept", "application/json");
+            });
+            var model = response.Body.DeserializeJson<IEnumerable<CharacterModel>>().ToArray();
+            
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.Empty(model);
         }
     }
 }

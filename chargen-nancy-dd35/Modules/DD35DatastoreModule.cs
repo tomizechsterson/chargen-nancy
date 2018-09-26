@@ -12,13 +12,20 @@ namespace chargen_nancy.Modules.DD35
 
             Get("/", async args => await db.Get());
             Get("/{id:int}", async args => await db.Get(args.id));
+
             Post("/", async args =>
             {
                 var model = this.Bind<CharacterModel>();
                 await db.Add(model);
             });
-            Put("/{id:int}", args => -1);
-            Delete("/{id:int}", args => -1);
+
+            Put("/{id:int}", async args =>
+            {
+                var model = this.Bind<CharacterModel>();
+                await db.Update(args.id, model);
+            });
+
+            Delete("/{id:int}", async args => { await db.Delete(args.id); });
         }
     }
 }

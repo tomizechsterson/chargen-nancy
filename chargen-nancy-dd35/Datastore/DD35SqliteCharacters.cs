@@ -17,12 +17,15 @@ namespace chargen_nancy_dd35.Datastore
 
         public DD35SqliteCharacters(SqliteConnection testConnection)
         {
+            if (testConnection.ConnectionString == null)
+                _dbName = "characters";
+
             _testConnection = testConnection;
         }
         
         public async Task<CharacterModel[]> Get()
         {
-            if (_testConnection != null)
+            if (_testConnection?.ConnectionString != null)
                 return await Get(_testConnection);
 
             using (var conn = new SqliteConnection($"DataSource={_dbName}"))
@@ -31,7 +34,7 @@ namespace chargen_nancy_dd35.Datastore
 
         public async Task<CharacterModel> Get(long id)
         {
-            if (_testConnection != null)
+            if (_testConnection?.ConnectionString != null)
                 return await Get(id, _testConnection);
 
             using (var conn = new SqliteConnection($"DataSource={_dbName}"))
@@ -40,7 +43,7 @@ namespace chargen_nancy_dd35.Datastore
 
         public async Task<long> Add(CharacterModel model)
         {
-            if (_testConnection != null)
+            if (_testConnection?.ConnectionString != null)
                 return await Add(model, _testConnection);
 
             using (var conn = new SqliteConnection($"DataSource={_dbName}"))
@@ -49,7 +52,7 @@ namespace chargen_nancy_dd35.Datastore
 
         public async Task Update(long id, CharacterModel model)
         {
-            if (_testConnection != null)
+            if (_testConnection?.ConnectionString != null)
                 await Update(id, model, _testConnection);
             else
             {
@@ -60,7 +63,7 @@ namespace chargen_nancy_dd35.Datastore
 
         public async Task Delete(long id)
         {
-            if (_testConnection != null)
+            if (_testConnection?.ConnectionString != null)
                 await Delete(id, _testConnection);
             else
             {
