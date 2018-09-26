@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chargen-nancy", "chargen-na
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chargen-nancy-tests", "chargen-nancy-tests\chargen-nancy-tests.csproj", "{35F80387-2D0D-4C76-9FA0-5DF98C996220}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chargen-nancy-storyteller", "chargen-nancy-storyteller\chargen-nancy-storyteller.csproj", "{40A3D20F-C555-4CFB-964C-BDA11470024A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chargen-nancy-dd35", "chargen-nancy-dd35\chargen-nancy-dd35.csproj", "{C76174AF-3526-4D96-B7B5-8EC7CFF09561}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{35F80387-2D0D-4C76-9FA0-5DF98C996220}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35F80387-2D0D-4C76-9FA0-5DF98C996220}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35F80387-2D0D-4C76-9FA0-5DF98C996220}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40A3D20F-C555-4CFB-964C-BDA11470024A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40A3D20F-C555-4CFB-964C-BDA11470024A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40A3D20F-C555-4CFB-964C-BDA11470024A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40A3D20F-C555-4CFB-964C-BDA11470024A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C76174AF-3526-4D96-B7B5-8EC7CFF09561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C76174AF-3526-4D96-B7B5-8EC7CFF09561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C76174AF-3526-4D96-B7B5-8EC7CFF09561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C76174AF-3526-4D96-B7B5-8EC7CFF09561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

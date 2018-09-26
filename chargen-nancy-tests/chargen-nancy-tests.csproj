@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\chargen-nancy-dd35\chargen-nancy-dd35.csproj" />
       <ProjectReference Include="..\chargen-nancy\chargen-nancy.csproj" />
     </ItemGroup>
 
