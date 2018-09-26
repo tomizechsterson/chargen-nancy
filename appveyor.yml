@@ -20,3 +20,7 @@ test_script:
   - cmd: dotnet run -p chargen-nancy-storyteller -- run --tracing appveyor
 
 deploy: off
+
+artifacts:
+  - path: stresults.htm
+    name: StorytellerResults.htm
