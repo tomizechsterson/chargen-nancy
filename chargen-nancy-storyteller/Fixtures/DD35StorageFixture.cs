@@ -55,6 +55,20 @@ namespace chargen_nancy_storyteller.Fixtures
             });
         }
 
+        public async Task UpdateAsync(int id, string name)
+        {
+            await _browser.Put("/", with =>
+            {
+                with.HttpsRequest();
+                with.Body($"name: {name}", "applicaiton/json");
+            });
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            await _browser.Delete($"/{id.ToString()}", with => { with.HttpsRequest(); });
+        }
+
         public string CheckName()
         {
             return _character.Name;

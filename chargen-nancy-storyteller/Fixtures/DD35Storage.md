@@ -9,5 +9,11 @@
 ## InsertNewAsync
 ### Create a character with name {name}
 
+## UpdateAsync
+### Update name of character id {id} to {name}
+
+## DeleteAsync
+### Delete character with id {id}
+
 ## CheckName
 ### The name of the character should be {returnValue}
