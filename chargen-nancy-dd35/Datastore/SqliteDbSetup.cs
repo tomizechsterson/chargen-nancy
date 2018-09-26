@@ -4,26 +4,35 @@ namespace chargen_nancy_dd35.Datastore
 {
     public class SqliteDbSetup
     {
-        private readonly SqliteConnection _connection;
+        private readonly string _dbName;
+        private readonly SqliteConnection _testConnection;
 
-        public SqliteDbSetup(string connectionString)
+        public SqliteDbSetup(string dbName)
         {
-            if (connectionString.Contains(":memory:"))
-            {
-                TestConnection = new SqliteConnection(connectionString);
-                _connection = TestConnection;
-            }
-            else
-                _connection = new SqliteConnection(connectionString);
+            _dbName = dbName;
         }
 
-        public SqliteConnection TestConnection { get; }
+        public SqliteDbSetup(SqliteConnection testConnection)
+        {
+            _testConnection = testConnection;
+        }
 
         public void CreateTables()
         {
-            var cmd = _connection.CreateCommand();
+            if (_testConnection != null)
+                ExecuteCommand(_testConnection);
+            else
+            {
+                using (var conn = new SqliteConnection($"DataSource={_dbName}"))
+                    ExecuteCommand(conn);
+            }
+        }
+
+        private static void ExecuteCommand(SqliteConnection connection)
+        {
+            var cmd = connection.CreateCommand();
             cmd.CommandText = CreateTableSql();
-            _connection.Open();
+            connection.Open();
             cmd.ExecuteNonQuery();
         }
 
