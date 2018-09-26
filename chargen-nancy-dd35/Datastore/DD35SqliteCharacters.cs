@@ -22,7 +22,7 @@ namespace chargen_nancy_dd35.Datastore
 
             _testConnection = testConnection;
         }
-        
+
         public async Task<CharacterModel[]> Get()
         {
             if (_testConnection?.ConnectionString != null)
