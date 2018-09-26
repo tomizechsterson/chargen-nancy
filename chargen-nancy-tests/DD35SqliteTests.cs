@@ -17,7 +17,7 @@ namespace chargen_nancy_tests
         }
 
         [Fact]
-        public async Task GetAll()
+        public async Task GetAllAsync()
         {
             await _db.Add(new CharacterModel {Name = "first"});
             await _db.Add(new CharacterModel {Name = "second"});
@@ -28,7 +28,7 @@ namespace chargen_nancy_tests
         }
 
         [Fact]
-        public async Task InsertGet()
+        public async Task InsertGetAsync()
         {
             await _db.Add(new CharacterModel {Name = "test"});
 
@@ -39,7 +39,7 @@ namespace chargen_nancy_tests
         }
 
         [Fact]
-        public async Task Update()
+        public async Task UpdateAsync()
         {
             await _db.Add(new CharacterModel {Name = "initial"});
             await _db.Update(1, new CharacterModel {Name = "updated"});
@@ -50,7 +50,7 @@ namespace chargen_nancy_tests
         }
 
         [Fact]
-        public async Task Delete()
+        public async Task DeleteAsync()
         {
             await _db.Add(new CharacterModel {Name = "delete"});
 
