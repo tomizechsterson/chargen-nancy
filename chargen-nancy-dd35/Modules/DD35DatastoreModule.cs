@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using chargen_nancy_dd35.Datastore;
 using Nancy;
+using Nancy.ModelBinding;
 
 namespace chargen_nancy.Modules.DD35
 {
@@ -10,9 +10,13 @@ namespace chargen_nancy.Modules.DD35
         {
             var db = storage ?? new DD35SqliteCharacters("DataSource=characters");
 
-            Get("/", args => new List<CharacterModel> {CharacterModel.NullModel(), CharacterModel.NullModel()});
-            Get("/{id:int}", async args => CharacterModel.NullModel());
-            Post("/", async args => -1);
+            Get("/", async args => await db.Get());
+            Get("/{id:int}", async args => await db.Get(args.id));
+            Post("/", async args =>
+            {
+                var model = this.Bind<CharacterModel>();
+                await db.Add(model);
+            });
             Put("/{id:int}", args => -1);
             Delete("/{id:int}", args => -1);
         }
