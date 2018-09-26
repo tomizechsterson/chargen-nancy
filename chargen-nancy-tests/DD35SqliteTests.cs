@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using chargen_nancy_dd35.Datastore;
 using Microsoft.Data.Sqlite;
@@ -52,6 +53,7 @@ namespace chargen_nancy_tests
         [Fact]
         public async Task DeleteAsync()
         {
+            throw new Exception("Test breaking a test");
             await _db.Add(new CharacterModel {Name = "delete"});
 
             await _db.Delete(1);
