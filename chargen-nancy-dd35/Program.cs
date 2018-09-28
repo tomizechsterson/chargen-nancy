@@ -11,6 +11,7 @@ namespace chargen_nancy_dd35
         }
 
         private static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().UseUrls("http://localhost:43002", "https://localhost:43003");
+            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>()
+                .UseUrls("http://localhost:43002", "https://localhost:43003");
     }
 }
