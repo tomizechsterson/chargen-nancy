@@ -32,7 +32,6 @@ namespace chargen_nancy
                 app.UseDeveloperExceptionPage();
 
             app.UseCors("AnyOrigin");
-
             app.UseOwin(x => x.UseNancy());
             new DBSetup("characters").Setup();
         }

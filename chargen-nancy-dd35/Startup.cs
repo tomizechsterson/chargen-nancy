@@ -32,8 +32,6 @@ namespace chargen_nancy_dd35
                 app.UseDeveloperExceptionPage();
             
             app.UseCors("AnyOrigin");
-
-            app.UseCors("AnyOrigin");
             app.UseOwin(x => x.UseNancy());
             new SqliteDbSetup("characters").CreateTables();
         }
