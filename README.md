@@ -2,7 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/3gglyn3p7qjew4wc?svg=true)](https://ci.appveyor.com/project/tomizechsterson/chargen-nancy)
 
-These services are another backend for the [chargen-ui](https://github.com/tomizechsterson/chargen-ui) ReactJS project. This is simply an attempt to use the NancyFx framework for something a bit more than a 'hello world' app. This means that this project will also not implement every required feature in order to end up with a fully created and playable character for any of these games.
+These services are another backend for the [chargen-ui](https://github.com/tomizechsterson/chargen-ui) ReactJS project. This is simply an attempt to use the [NancyFx](http://nancyfx.org/) framework for something a bit more than a 'hello world' app. This means that this project will also not implement every required feature in order to end up with a fully created and playable character for any of these games.
 
 ## Getting Started
 

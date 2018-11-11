@@ -29,9 +29,9 @@ namespace chargen_nancy_dd35
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
+            
+            app.UseCors("AnyOrigin");
 
             app.UseCors("AnyOrigin");
             app.UseOwin(x => x.UseNancy());
