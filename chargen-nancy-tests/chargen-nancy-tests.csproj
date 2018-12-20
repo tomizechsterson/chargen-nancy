@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -17,8 +17,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\chargen-nancy-add2\chargen-nancy-add2.csproj" />
       <ProjectReference Include="..\chargen-nancy-dd35\chargen-nancy-dd35.csproj" />
-      <ProjectReference Include="..\chargen-nancy\chargen-nancy.csproj" />
     </ItemGroup>
 
 </Project>
